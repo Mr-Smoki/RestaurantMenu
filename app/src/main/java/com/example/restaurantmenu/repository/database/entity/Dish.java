@@ -20,7 +20,7 @@ public class Dish {
     public String description;
 
     public String getPrice() {
-        DecimalFormat decimalFormat = new DecimalFormat("0 руб.");
-        return decimalFormat.format(price);
+        DecimalFormat decimalFormat = new DecimalFormat("0 руб");
+        return decimalFormat.format(price) + ".";
     }
 }

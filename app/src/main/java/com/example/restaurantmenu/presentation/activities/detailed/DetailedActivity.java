@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.restaurantmenu.databinding.ActivityDetailedBinding;
 import com.example.restaurantmenu.presentation.activities.edit.EditActivity;
@@ -19,6 +20,7 @@ public class DetailedActivity extends AppCompatActivity {
     AppData appData;
     Dish localDish;
     ActivityDetailedBinding binding;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class DetailedActivity extends AppCompatActivity {
         binding = ActivityDetailedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         appData = AppData.getInstance(getApplicationContext());
-        int id = getIntent().getIntExtra(AppData.ID,-1);
+        id = getIntent().getIntExtra(AppData.ID,-1);
         appData.db.dishDao().findById(id).observe(this, new Observer<Dish>() {
             @Override
             public void onChanged(Dish dish) {
@@ -38,6 +40,14 @@ public class DetailedActivity extends AppCompatActivity {
             }
         });
         binding.goEditButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editActivity =new Intent(DetailedActivity.this, EditActivity.class);
+                editActivity.putExtra(AppData.ID,id);
+                startActivity(editActivity);
+            }
+        });
+        binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent menuActivity =new Intent(DetailedActivity.this, MenuActivity.class);

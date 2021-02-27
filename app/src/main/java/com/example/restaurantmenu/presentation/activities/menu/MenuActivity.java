@@ -62,15 +62,6 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-
-
-//        binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent editActivity = new Intent(MainActivity.this, EditActivity.class);
-//                startActivity(editActivity);
-//            }
-//        });
     }
 
     private void initDishesAdapter() {
@@ -89,10 +80,10 @@ public class MenuActivity extends AppCompatActivity {
             final Dish itemDish = localDishes.get(position);
             holder.dishBinding.nameView.setText(itemDish.name);
             holder.dishBinding.priceView.setText(itemDish.getPrice());
-            holder.dishBinding.descriptionView.setText(itemDish.description);
+           holder.dishBinding.descriptionView.setText(itemDish.description);
             appData.loadImage(itemDish.url,holder.dishBinding.photoView);
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            holder.dishBinding.detailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent detailedActivity = new Intent(MenuActivity.this, DetailedActivity.class);
