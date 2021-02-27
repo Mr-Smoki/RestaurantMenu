@@ -40,6 +40,7 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 url = "";
+                binding.urlView.setText("");
                 binding.formSetPhoto.setVisibility(View.INVISIBLE);
             }
         });
