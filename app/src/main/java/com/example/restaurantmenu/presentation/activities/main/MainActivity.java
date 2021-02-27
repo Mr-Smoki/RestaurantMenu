@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.restaurantmenu.databinding.ActivityMainBinding;
 import com.example.restaurantmenu.presentation.activities.menu.MenuActivity;
+import com.example.restaurantmenu.repository.AppData;
 
 import java.nio.channels.InterruptedByTimeoutException;
 
@@ -28,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                AppData.getInstance(getApplicationContext()).admin = binding.userTypePicker.getValue()==0;
                 startActivity(intent);
-                boolean admin = binding.userTypePicker.getValue()==0;
+
             }
         });
     }

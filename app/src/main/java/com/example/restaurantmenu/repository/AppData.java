@@ -15,8 +15,10 @@ import com.example.restaurantmenu.repository.database.AppDatabase;
 public class AppData {
 
     public static final String ID = "id";
+    public static final String TITLE = "title";
 
     private  static AppData instance;
+    public boolean admin;
 
     public static AppData getInstance(Context context) {
         if(instance==null)

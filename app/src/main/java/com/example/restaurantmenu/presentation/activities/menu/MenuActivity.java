@@ -41,6 +41,8 @@ public class MenuActivity extends AppCompatActivity {
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         inflater = getLayoutInflater();
         appData = AppData.getInstance(getApplicationContext());
         initDishesAdapter();
@@ -61,6 +63,13 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(editActivity);
             }
         });
+
+
+        if(appData.admin)
+        {
+            
+        }
+
 
     }
 
