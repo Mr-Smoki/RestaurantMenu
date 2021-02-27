@@ -88,6 +88,8 @@ public class MenuActivity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
             final Dish itemDish = localDishes.get(position);
             holder.dishBinding.nameView.setText(itemDish.name);
+            holder.dishBinding.priceView.setText(itemDish.getPrice());
+            holder.dishBinding.descriptionView.setText(itemDish.description);
             appData.loadImage(itemDish.url,holder.dishBinding.photoView);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
