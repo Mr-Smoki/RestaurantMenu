@@ -35,6 +35,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:clickable="true"
+        android:visibility="invisible"
         app:backgroundTint="@color/greenBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

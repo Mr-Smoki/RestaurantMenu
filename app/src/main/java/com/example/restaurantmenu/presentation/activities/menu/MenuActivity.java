@@ -67,7 +67,7 @@ public class MenuActivity extends AppCompatActivity {
 
         if(appData.admin)
         {
-
+            binding.goAddButton.setVisibility(View.VISIBLE);
         }
 
 

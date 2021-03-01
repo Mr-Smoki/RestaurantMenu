@@ -54,5 +54,11 @@ public class DetailedActivity extends AppCompatActivity {
                 startActivity(menuActivity);
             }
         });
+
+        if(appData.admin)
+        {
+            binding.goEditButton.setVisibility(View.VISIBLE);
+        }
+
     }
 }
