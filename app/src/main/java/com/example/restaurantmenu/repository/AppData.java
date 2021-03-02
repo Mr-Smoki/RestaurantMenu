@@ -27,7 +27,7 @@ public class AppData {
     }
     public AppDatabase db;
 
-    RequestManager glide;
+    public RequestManager glide;
     private AppData(Context context) {
         db = Room.databaseBuilder(context,
                 AppDatabase.class, "database-name")

@@ -1,13 +1,19 @@
 package com.example.restaurantmenu.presentation.activities.detailed;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.example.restaurantmenu.R;
 import com.example.restaurantmenu.databinding.ActivityDetailedBinding;
 import com.example.restaurantmenu.presentation.activities.edit.EditActivity;
 import com.example.restaurantmenu.presentation.activities.main.MainActivity;
@@ -25,8 +31,10 @@ public class DetailedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        postponeEnterTransition();
         binding = ActivityDetailedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         appData = AppData.getInstance(getApplicationContext());
         id = getIntent().getIntExtra(AppData.ID,-1);
         appData.db.dishDao().findById(id).observe(this, new Observer<Dish>() {
@@ -36,9 +44,20 @@ public class DetailedActivity extends AppCompatActivity {
                     finish();
                 localDish  = dish;
                 binding.setDish(dish);
-                appData.loadImage(dish.url,binding.photoView);
+                appData.glide.load(dish.url)
+                        .placeholder(R.drawable.ic_launcher_foreground)
+                        .into(new SimpleTarget<Drawable>() {
+                            @Override
+                            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                binding.photoView.setImageDrawable(resource);
+                                startPostponedEnterTransition();
+                            }
+                        });
             }
         });
+
+
+
         binding.goEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

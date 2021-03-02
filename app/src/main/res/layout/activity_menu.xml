@@ -52,17 +52,15 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        app:layout_constraintEnd_toEndOf="@+id/dishesView"
-        app:layout_constraintStart_toStartOf="@+id/dishesView"
         app:layout_constraintTop_toTopOf="@+id/dishesView"
         app:srcCompat="@drawable/gradient" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleY="-1"

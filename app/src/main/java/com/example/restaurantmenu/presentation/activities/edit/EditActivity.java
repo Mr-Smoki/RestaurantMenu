@@ -106,6 +106,9 @@ public class EditActivity extends AppCompatActivity {
                     binding.nameView.setText(dish.name);
                     binding.descriptionView.setText(dish.description);
                     binding.priceView.setText(String.valueOf(dish.price));
+                    url = dish.url;
+                    binding.urlView.setText(url);
+                    appData.loadImage(url,binding.photoView);
                 }
             });
             binding.deleteButton.setOnClickListener(new View.OnClickListener() {
